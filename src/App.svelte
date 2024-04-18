@@ -3,9 +3,12 @@
   let error = ''
 </script>
 
-<main>
-  <form class="form-container" on:submit={(e) => {
+<main class="main-container">
+  <form class="form-container" on:submit={async (e) => {
     e.preventDefault()
+
+    console.log(await fetch("https://chili.ansatt.dev.nav.no/isalive"))
+
     if (teamName.length === 0) error = 'Du må sette et team navn'
     else error = ''
   }}>
@@ -23,10 +26,18 @@
 </main>
 
 <style>
+  .main-container {
+    width: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .form-container {
     display: flex;
     flex-direction: column;
-    max-width: 20rem;
+    width: 15rem;
     gap: 1rem;
   }
   .input-container {
