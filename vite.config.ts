@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
         '/chili/': {
-            target: 'https://chili.ekstern.dev.nav.no',
+            target: 'https://chili.intern.dev.nav.no',
             changeOrigin: true,
             secure: true,
             rewrite: (path) => path.replace(/^\chili/, ''),
