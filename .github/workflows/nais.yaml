@@ -1,0 +1,31 @@
+name: Deploy pistasj
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: yarn
+      - run: yarn build
+      - uses: navikt/frontend/actions/spa-deploy/v2@main
+        with:
+          app: pistasj
+          team: knekk
+          source: ./dist
+          ingress: https://pistasj.ekstern.dev.nav.no
+          environment: dev
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}

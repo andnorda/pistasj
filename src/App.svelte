@@ -6,8 +6,9 @@
 <main class="main-container">
   <form class="form-container" on:submit={async (e) => {
     e.preventDefault()
+    const data = await fetch("/chili/isalive").then(res => res.json())
 
-    console.log(await fetch("https://chili.ansatt.dev.nav.no/isalive"))
+    console.log(data)
 
     if (teamName.length === 0) error = 'Du må sette et team navn'
     else error = ''
@@ -27,8 +28,6 @@
 
 <style>
   .main-container {
-    width: 100vh;
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
