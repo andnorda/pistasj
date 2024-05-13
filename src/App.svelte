@@ -6,9 +6,6 @@
 <main class="main-container">
   <form class="form-container" on:submit={async (e) => {
     e.preventDefault()
-    const data = await fetch("/chili/isalive").then(res => res.json())
-
-    console.log(data)
 
     if (teamName.length === 0) error = 'Du må sette et team navn'
     else error = ''
