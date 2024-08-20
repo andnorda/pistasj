@@ -20,7 +20,7 @@ jobs:
           node-version: 20
       - run: yarn
       - run: yarn build
-      - uses: navikt/frontend/actions/spa-deploy/v2@main
+      - uses: nais/deploy/actions/spa-deploy/v2@master
         with:
           app: pistasj
           team: knekk
